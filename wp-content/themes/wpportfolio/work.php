@@ -8,10 +8,17 @@
 
 <p>This is work.php</p>
 
-<?php if ( have_posts() ): while ( have_posts() ): the_post(); ?>
+<?php 
+
+	$args = array( 'post_type' => 'work' );
+	$query = new WP_Query( $args );
+
+?>
+
+<?php if ( have_posts() ): while ( $query->have_posts() ): $query->the_post(); ?>
 
 	<h3><?php the_title() ?></h3>
-	<p><?php the_content() ?></p>
+	<p><?php the_field( 'description' ); ?></p>
 	<hr>
 
 <?php endwhile; else: ?>

@@ -17,7 +17,11 @@
 
 <?php if ( have_posts() ): while ( $query->have_posts() ): $query->the_post(); ?>
 
-	<h3><?php the_title() ?></h3>
+	<h3>
+		<a href='<?php the_permalink(); ?>'>
+			<?php the_title() ?>
+		</a>
+	</h3>
 	<p><?php the_field( 'description' ); ?></p>
 	<hr>
 
